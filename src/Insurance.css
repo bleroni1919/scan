@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .visitor-info {
+    margin-bottom: 20px;
+  }
+  
+  .visitor-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .visitor-card img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+  
