@@ -1,23 +1,34 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px; /* Add padding for better spacing */
+}
+
+.visitor-info {
+  margin-bottom: 20px;
+}
+
+.visitor-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.visitor-card img {
+  width: 100%;
+  max-width: 100px;
+  height: auto;
+}
+
+/* Media query for screens smaller than 768px (typical smartphones) */
+@media only screen and (max-width: 767px) {
+  .container {
+    padding: 10px; /* Adjust padding for smaller screens */
   }
-  
-  .visitor-info {
-    margin-bottom: 20px;
-  }
-  
-  .visitor-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
+
   .visitor-card img {
-    width: 100%;
-    max-width: 100px;
-    height: auto;
+    max-width: 80px; /* Decrease max-width for smaller screens */
   }
-  
+}

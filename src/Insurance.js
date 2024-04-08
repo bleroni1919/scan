@@ -57,7 +57,7 @@ function Insurance() {
     <div class="container-fluid">
       {!cameraOpen ? (
         <div>
-          <h1>You need to take a photo to sign the insurance form</h1>
+          <h3>You need to take a photo to sign the insurance form</h3>
           <div>
             <strong>Full Name: {visitors[currentVisitorIndex].fullName}</strong>
             <p>Email: {visitors[currentVisitorIndex].email}</p>
