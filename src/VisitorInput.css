@@ -1,0 +1,56 @@
+.container-fluid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    height: 90%;
+    width: 50%;
+    margin: auto;
+  }
+  
+  .buttons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .buttons h4 {
+    margin-right: 10px; /* Add some spacing between the text and buttons */
+  }
+  
+  .buttons button {
+    border-radius: 10px;
+    height: 30px;
+    width: 50px;
+    border-color: rgb(179, 178, 178);
+    background-color: white;
+  }
+  
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px; /* Add margin between input groups */
+  }
+  
+  .container-fluid input {
+    height: 35px;
+    width: 300px;
+    border-radius: 30px;
+    margin-bottom: 10px;
+  }
+
+  .submit-button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    }
+
+    .subi{
+        width: 300px;
+        height: 35px;
+        border-radius: 30px;
+        border-color: orange;
+        background-color: orange;
+        color: white;
+
+    }

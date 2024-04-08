@@ -1,22 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import "./Insurance.css";
+
+
 
 function Insurance() {
   const navigate = useNavigate();
   const location = useLocation();
   const visitors = location.state.visitors;
   const [currentVisitorIndex, setCurrentVisitorIndex] = useState(0);
-  const [fullName, setFullName] = useState(visitors[currentVisitorIndex].fullName);
-  const [email, setEmail] = useState(visitors[currentVisitorIndex].email);
   const [cameraOpen, setCameraOpen] = useState(false);
-  const [imagesData, setImagesData] = useState([]); // Change this to an array
+  const [imagesData, setImagesData] = useState([]);
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
-
-  useEffect(() => {
-    setFullName(visitors[currentVisitorIndex].fullName);
-    setEmail(visitors[currentVisitorIndex].email);
-  }, [currentVisitorIndex]);
 
   const handleOpenCamera = () => {
     setCameraOpen(true);
@@ -49,35 +45,22 @@ function Insurance() {
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
     const imageDataURL = canvas.toDataURL('image/png');
-    setImagesData([...imagesData, imageDataURL]); // Add the new image to the array
+    setImagesData([...imagesData, { name: visitors[currentVisitorIndex].fullName, image: imageDataURL }]);
 
     handleCloseCamera();
-  };
-
-  const handleSubmit = () => {
     if (currentVisitorIndex < visitors.length - 1) {
       setCurrentVisitorIndex(currentVisitorIndex + 1);
-    } else {
-      navigate('/submit');
     }
   };
 
   return (
-    <div>
+    <div class="container-fluid">
       {!cameraOpen ? (
         <div>
           <h1>You need to take a photo to sign the insurance form</h1>
           <div>
-            <label>
-              Full Name:
-              <input type="text" value={fullName} readOnly />
-            </label>
-          </div>
-          <div>
-            <label>
-              Email:
-              <input type="email" value={email} readOnly />
-            </label>
+            <strong>Full Name: {visitors[currentVisitorIndex].fullName}</strong>
+            <p>Email: {visitors[currentVisitorIndex].email}</p>
           </div>
           <button onClick={handleOpenCamera}>Open Camera</button>
         </div>
@@ -89,12 +72,13 @@ function Insurance() {
           <button onClick={handleCaptureScreenshot}>Take Photo</button>
         </div>
       )}
-      {imagesData.map((imageDataURL, index) => (
+      {imagesData.map((visitorData, index) => (
         <div key={index}>
-          <img src={imageDataURL} alt="Captured" />
-          <button onClick={handleSubmit}>Sign Insurance Form</button>
+          <strong>{visitorData.name}</strong>
+          <img src={visitorData.image} alt="Captured" />
         </div>
       ))}
+      {imagesData.length === visitors.length && <button onClick={() => navigate('/submit')}>Sign Insurance Form</button>}
     </div>
   );
 }

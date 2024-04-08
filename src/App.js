@@ -10,7 +10,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/scanner" element={<Scanner />} />
+        <Route path="/" element={<Scanner />} />
         <Route path="/visitorinput/:result" element={<VisitorInput />} />
         <Route path="/insurance" element={<Insurance />} /> 
         <Route path="/submit" element={<Submit />} /> 

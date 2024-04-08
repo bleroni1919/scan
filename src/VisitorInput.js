@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import './VisitorInput.css'; 
 
 function VisitorInput() {
   const { result } = useParams();
@@ -34,29 +35,37 @@ function VisitorInput() {
   };
 
   return (
-    <div>
+    <div class="container-fluid">
       <h2>Scanned Result: {result}</h2>
-      {inputs.map((input) => (
-        <div key={input.id}>
+        <div className="buttons">
+        <h4>Number of people:</h4>
+        <button onClick={handleAddInput}>+</button>
+        <button onClick={handleRemoveInput}>-</button>
+        
+      </div>
+      {inputs.map((input, index) => (
+        <div key={input.id} className="input-group">
+          <h4>Person {index + 1}</h4>
           <input
             type="text"
             name="fullName"
-            placeholder="Full Name"
+            placeholder=" Full Name"
             value={input.fullName}
             onChange={(e) => handleInputChange(input.id, e)}
           />
           <input
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder=" Email"
             value={input.email}
             onChange={(e) => handleInputChange(input.id, e)}
           />
+          
         </div>
       ))}
-      <button onClick={handleAddInput}>+</button>
-      <button onClick={handleRemoveInput}>-</button>
-      <button onClick={handleSubmit}>Check-in</button>
+      <div className="submit-button">
+        <button onClick={handleSubmit} className="subi">Check-in</button>
+      </div>
     </div>
   );
 }
