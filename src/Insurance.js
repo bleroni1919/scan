@@ -2,8 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import "./Insurance.css";
 
-
-
 function Insurance() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -39,8 +37,11 @@ function Insurance() {
     const canvas = canvasRef.current;
     const video = videoRef.current;
 
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
+    // Scale down the size of the canvas
+    const scale = 0.5; // Adjust this value to change the size of the captured image
+    canvas.width = video.videoWidth * scale;
+    canvas.height = video.videoHeight * scale;
+
     const context = canvas.getContext('2d');
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
@@ -57,19 +58,20 @@ function Insurance() {
     <div class="container-fluid">
       {!cameraOpen ? (
         <div>
-          <h3>You need to take a photo to sign the insurance form</h3>
+          <h3>You Need to Take a Photo to Sign the Insurance</h3>
           <div>
-            <strong>Full Name: {visitors[currentVisitorIndex].fullName}</strong>
-            <p>Email: {visitors[currentVisitorIndex].email}</p>
+            <p className='col'>{visitors[currentVisitorIndex].fullName}</p>
+            <p className='col'> {visitors[currentVisitorIndex].email}</p>
           </div>
-          <button onClick={handleOpenCamera}>Open Camera</button>
+          <button onClick={handleOpenCamera} className='butoni3'>Open Camera</button>
+          {imagesData.length === visitors.length && <button onClick={() => navigate('/submit')} className='butoni3'>Sign Insurance Form</button>}
         </div>
       ) : (
         <div id="camera-preview">
           <video ref={videoRef} autoPlay playsInline />
           <canvas ref={canvasRef} style={{ display: 'none' }} />
-          <button onClick={handleCloseCamera}>Close Camera</button>
-          <button onClick={handleCaptureScreenshot}>Take Photo</button>
+          <button onClick={handleCloseCamera} className='butoni4'>Close Camera</button>
+          <button onClick={handleCaptureScreenshot} className='butoni4'>Take Photo</button>
         </div>
       )}
       {imagesData.map((visitorData, index) => (
@@ -78,7 +80,7 @@ function Insurance() {
           <img src={visitorData.image} alt="Captured" />
         </div>
       ))}
-      {imagesData.length === visitors.length && <button onClick={() => navigate('/submit')}>Sign Insurance Form</button>}
+      
     </div>
   );
 }

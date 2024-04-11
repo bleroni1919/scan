@@ -8,7 +8,7 @@ function Success() {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       navigate('/'); // Replace '/' with the actual route to your scanner.js page
-    }, 5000); // 5000 milliseconds (5 seconds)
+    }, 9000); // 5000 milliseconds (5 seconds)
 
     // Clean up the timeout when the component unmounts
     return () => clearTimeout(timeoutId);

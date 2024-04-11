@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Scanner from "./Scanner";
 import VisitorInput from "./VisitorInput";
 import Insurance from "./Insurance";
-import Submit from "./Submit"
+import Submit from "./Submit";
 
 function App() {
   return (
