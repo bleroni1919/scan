@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Html5QrcodeScanner } from "html5-qrcode";
+import "./Scanner.css"; 
 
 function Scanner() {
   const [scanResult, setScanResult] = useState(null);
@@ -36,8 +37,10 @@ function Scanner() {
   };
 
   return (
-    <div>
-      <button onClick={handleScan}>Start Scanning</button>
+    <div className="scanner-container">
+      <h3>Welcome to ImagineRIT Exhibitions</h3>
+      <p>Scan Your QR Code to Enter the Exhibit</p>
+      <button onClick={handleScan} className="scan-but">Start Scanning</button>
       {scanResult ? (
         <div>
           Success: {scanResult}

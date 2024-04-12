@@ -1,0 +1,35 @@
+.scanner-container {
+    text-align: center;
+    margin-top: 50px; /* Adjust margin as needed */
+  }
+  
+  #reader {
+    margin-top: 20px; /* Adjust margin as needed */
+  }
+  
+  .scan-but {
+    margin-top: 20px; /* Adjust margin as needed */
+    padding: 10px 20px;
+    background-color: #dd6e19; /* Orange color */
+    color: #fff; /* White color */
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    animation: slideUp 1s ease forwards; /* Apply the animation */
+    opacity: 0; /* Initially hide the button */
+  }
+  
+  /* Keyframes for the slide up animation */
+  @keyframes slideUp {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  
